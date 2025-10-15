@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 🧠 Smart Recipe Generator
 
 An AI-powered web app that generates delicious recipes instantly based on the ingredients you provide.
@@ -173,3 +174,5 @@ https://<your-backend-url>/api/generate-recipe
 🧾 Allow users to download or share recipes
 
 🗂️ Add categories, cuisine filters, and difficulty levels
+=======
+>>>>>>> edfc880 (Initial project structure created)
