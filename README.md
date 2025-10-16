@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+HEAD
 🧠 Smart Recipe Generator
 
 An AI-powered web app that generates delicious recipes instantly based on the ingredients you provide.
