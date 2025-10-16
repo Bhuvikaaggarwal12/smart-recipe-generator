@@ -1,0 +1,7 @@
+router.post("/", async (req, res) => {
+  console.log("Generate Recipe request received:", req.body);
+  const { ingredients } = req.body;
+  if (!ingredients) return res.status(400).json({ message: "Ingredients required" });
+  ...
+});
+
