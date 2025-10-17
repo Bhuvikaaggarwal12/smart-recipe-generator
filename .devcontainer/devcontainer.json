@@ -1,12 +1,13 @@
 {
   "name": "Smart Recipe Generator",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:20",
   "forwardPorts": [5000],
   "portsAttributes": {
     "5000": {
       "label": "Backend Server",
-      "onAutoForward": "notify",
-      "visibility": "public"
+      "onAutoForward": "public"
     }
   },
-  "postCreateCommand": "npm install"
+  "postCreateCommand": "npm install",
+  "remoteUser": "node"
 }
