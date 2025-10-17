@@ -1,0 +1,12 @@
+{
+  "name": "Smart Recipe Generator",
+  "forwardPorts": [5000],
+  "portsAttributes": {
+    "5000": {
+      "label": "Backend Server",
+      "onAutoForward": "notify",
+      "visibility": "public"
+    }
+  },
+  "postCreateCommand": "npm install"
+}
