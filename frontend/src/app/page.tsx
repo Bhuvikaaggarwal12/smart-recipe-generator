@@ -1,7 +1,12 @@
 "use client";
 import Link from "next/link";
+import { useState } from "react";
+import AddDietaryPlan from "./components/AddDietaryPlan"; // .tsx automatically
+
 
 export default function Home() {
+  const [showModal, setShowModal] = useState(false);
+
   return (
     <main className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-br from-green-50 via-green-100 to-green-200 text-center px-6 relative overflow-hidden">
       {/* Decorative shapes */}
@@ -9,27 +14,20 @@ export default function Home() {
       <div className="absolute -bottom-32 -right-32 w-96 h-96 bg-green-300 rounded-full opacity-30 animate-pulse-slow"></div>
 
       <div className="relative z-10 max-w-2xl bg-white rounded-3xl shadow-2xl p-10 sm:p-16">
-        {/* Heading */}
         <h1 className="text-5xl sm:text-6xl font-extrabold text-green-700 mb-4 leading-tight">
           Smart Recipe Generator 🍳
         </h1>
-
-        {/* Subtitle */}
         <p className="text-base sm:text-lg text-gray-700 mb-10">
           Create delicious recipes instantly using AI. Choose your ingredients and let the magic happen!
         </p>
 
-        {/* Buttons */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          {/* Primary: Generate Recipe */}
+        <div className="flex flex-col sm:flex-row gap-4 justify-center mb-6">
           <Link
             href="/generate"
             className="bg-green-600 hover:bg-green-700 text-white font-semibold px-8 py-3 rounded-full shadow-lg transform hover:scale-105 transition duration-300"
           >
             Generate Recipe
           </Link>
-
-          {/* Secondary: Browse Recipes */}
           <Link
             href="/recipes"
             className="bg-white hover:bg-gray-100 text-green-700 border border-green-600 font-semibold px-8 py-3 rounded-full shadow-lg transform hover:scale-105 transition duration-300"
@@ -38,13 +36,17 @@ export default function Home() {
           </Link>
         </div>
 
-        {/* Footer */}
-        <footer className="mt-12 text-gray-500 text-sm sm:text-base">
-          Built with ❤️ using Next.js, Tailwind CSS, and GPT-4
-        </footer>
+        {/* Add Dietary Plan Button */}
+        <button
+          onClick={() => setShowModal(true)}
+          className="bg-green-500 hover:bg-green-600 text-white font-semibold px-6 py-3 rounded-full shadow-md transition"
+        >
+          Add Dietary Plan
+        </button>
       </div>
 
-      {/* Custom animations */}
+      {showModal && <AddDietaryPlan onClose={() => setShowModal(false)} />}
+
       <style jsx>{`
         @keyframes pulse-slow {
           0%, 100% { transform: scale(1); opacity: 0.4; }
@@ -57,4 +59,5 @@ export default function Home() {
     </main>
   );
 }
+
 

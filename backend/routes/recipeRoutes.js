@@ -3,30 +3,48 @@ import Recipe from "../models/Recipe.js";
 
 const router = express.Router();
 
-// Get all recipes
+// GET all recipes with optional filters
 router.get("/", async (req, res) => {
   try {
-    const recipes = await Recipe.find();
+    const { difficulty, maxTime, servingSize, dietary } = req.query;
+
+    const filter = {};
+    if (difficulty) filter.difficulty = difficulty;
+    if (dietary) filter.dietary = dietary;
+    if (maxTime) filter.cook_time_mins = { $lte: Number(maxTime) };
+    if (servingSize) filter.serving_size = { $gte: Number(servingSize) };
+
+    const recipes = await Recipe.find(filter)
+      .limit(20)
+      .sort({ createdAt: -1 });
+
     res.json(recipes);
   } catch (error) {
+    console.error(error);
     res.status(500).json({ message: error.message });
   }
 });
 
-// Add new recipe
-// Add new recipe (with logging for debugging)
+// POST new recipe
 router.post("/", async (req, res) => {
-  console.log("POST request received:", req.body); // log incoming data
-  const recipe = new Recipe(req.body);
   try {
+    const recipe = new Recipe({
+      name: req.body.name,
+      ingredients: req.body.ingredients,
+      instructions: req.body.instructions,
+      cuisine: req.body.cuisine,
+      difficulty: req.body.difficulty,
+      cook_time_mins: req.body.cook_time_mins,
+      serving_size: req.body.serving_size || 1,
+      dietary: req.body.dietary || "none",
+    });
+
     const newRecipe = await recipe.save();
-    console.log("Saved recipe:", newRecipe);
-    res.status(201).json(newRecipe); // send response
+    res.status(201).json(newRecipe);
   } catch (error) {
     console.error(error);
     res.status(400).json({ message: error.message });
   }
 });
-
 
 export default router;

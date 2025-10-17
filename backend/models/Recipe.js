@@ -5,9 +5,21 @@ const recipeSchema = new mongoose.Schema({
   ingredients: [String],
   instructions: String,
   cuisine: String,
-  difficulty: String,
-  cook_time_mins: Number
+  difficulty: {
+    type: String,
+    enum: ['Easy', 'Medium', 'Hard'],
+    default: 'Easy'
+  },
+  cook_time_mins: Number,
+  serving_size: { type: Number, default: 1 },
+  dietary: {
+    type: String,
+    enum: ['none', 'vegetarian', 'vegan', 'gluten-free', 'non-vegetarian'],
+    default: 'none',
+  },
 });
 
 const Recipe = mongoose.model('Recipe', recipeSchema);
 export default Recipe;
+
+
