@@ -1,5 +1,4 @@
 "use client";
-import Image from "next/image";
 import Link from "next/link";
 
 export default function Home() {
@@ -10,25 +9,15 @@ export default function Home() {
       <div className="absolute -bottom-32 -right-32 w-96 h-96 bg-green-300 rounded-full opacity-30 animate-pulse-slow"></div>
 
       <div className="relative z-10 max-w-2xl bg-white rounded-3xl shadow-2xl p-10 sm:p-16">
-        {/* Logo */}
-        <Image
-          src="/logo_smart_recipe_genertor.webp"
-          alt="Smart Recipe Generator Logo"
-          width={120}
-          height={120}
-          className="mx-auto mb-6 animate-bounce-slow"
-        />
-
         {/* Heading */}
-<h1 className="text-5xl sm:text-6xl font-extrabold text-green-700 mb-2 -mt-4 leading-tight">
-  Smart Recipe Generator 🍳
-</h1>
+        <h1 className="text-5xl sm:text-6xl font-extrabold text-green-700 mb-4 leading-tight">
+          Smart Recipe Generator 🍳
+        </h1>
 
-{/* Subtitle */}
-<p className="text-base sm:text-lg text-gray-700 mb-8">
-  Create delicious recipes instantly using AI. Choose your ingredients, and let the magic happen!
-</p>
-
+        {/* Subtitle */}
+        <p className="text-base sm:text-lg text-gray-700 mb-10">
+          Create delicious recipes instantly using AI. Choose your ingredients and let the magic happen!
+        </p>
 
         {/* Buttons */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -63,13 +52,6 @@ export default function Home() {
         }
         .animate-pulse-slow {
           animation: pulse-slow 8s ease-in-out infinite;
-        }
-        @keyframes bounce-slow {
-          0%, 100% { transform: translateY(0); }
-          50% { transform: translateY(-10px); }
-        }
-        .animate-bounce-slow {
-          animation: bounce-slow 3s ease-in-out infinite;
         }
       `}</style>
     </main>
